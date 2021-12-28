@@ -23,7 +23,7 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="product-pic-zoom">
-                    <img class="product-big-img" src="{% static 'img/single-product/1.jpg' %}" alt="">
+                    <img class="product-big-img" src="{{ product.image.url }}" alt="">
                 </div>
                 <div class="product-thumbs" tabindex="1" style="overflow: hidden; outline: none;">
                     <div class="product-thumbs-track">
@@ -39,9 +39,14 @@
                 </div>
             </div>
             <div class="col-lg-6 product-details">
-                <h2 class="p-title">White peplum top</h2>
-                <h3 class="p-price">$39.90</h3>
-                <h4 class="p-stock">Available: <span>In Stock</span></h4>
+                <h2 class="p-title">{{ product.name }}</h2>
+                {% for p in product.category.all %}
+                <p>{{ p.name }}</p>
+                {% endfor %}
+                <h3 class="p-price">${{ product.price }}</h3>
+                {% if product.is_available %}
+                    <h4 class="p-stock">Available: <span>In Stock</span></h4>
+                {% endif %}
                 <div class="p-rating">
                     <i class="fa fa-star-o"></i>
                     <i class="fa fa-star-o"></i>
@@ -93,12 +98,7 @@
                         </div>
                         <div id="collapse1" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                             <div class="panel-body">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pharetra tempor so
-                                    dales. Phasellus sagittis auctor gravida. Integer bibendum sodales arcu id te mpus.
-                                    Ut consectetur lacus leo, non scelerisque nulla euismod nec.</p>
-                                <p>Approx length 66cm/26" (Based on a UK size 8 sample)</p>
-                                <p>Mixed fibres</p>
-                                <p>The Model wears a UK size 8/ EU size 36/ US size 4 and her height is 5'8"</p>
+                                <p>{{ product.description }}</p>
                             </div>
                         </div>
                     </div>

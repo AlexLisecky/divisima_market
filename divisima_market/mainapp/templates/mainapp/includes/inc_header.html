@@ -38,8 +38,8 @@
             <!-- menu -->
             <ul class="main-menu">
                 <li><a href="{% url 'main:index' %}">Home</a></li>
-                <li><a href="#">Women</a></li>
-                <li><a href="#">Men</a></li>
+                <li><a href="{% url 'main:category' 'womanwear' %}">Women</a></li>
+                <li><a href="{% url 'main:category' 'manwear' %}">Men</a></li>
                 <li><a href="#">Jewelry
                     <span class="new">New</span>
                 </a></li>
@@ -54,7 +54,6 @@
                 </li>
                 <li><a href="#">Pages</a>
                     <ul class="sub-menu">
-                        <li><a href="{% url 'main:category' %}">Category Page</a></li>
                         <li><a href="{% url 'main:cart' %}">Cart Page</a></li>
                         <li><a href="{% url 'main:checkout' %}">Checkout Page</a></li>
                         <li><a href="{% url 'main:contact' %}">Contact Page</a></li>

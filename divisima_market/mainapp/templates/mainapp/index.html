@@ -1,5 +1,7 @@
 {% extends 'mainapp/base.html' %}
 {% load static %}
+{% block page_info %}
+{% endblock page_info %}
 {% block content %}
 <!-- Hero section -->
 <section class="hero-section">
@@ -104,7 +106,9 @@
                 </div>
                 <div class="pi-text">
                     <h6>${{ latest_prod.price }}</h6>
-                    <p>{{ latest_prod.name }}</p>
+                    <a href="{% url 'main:product' latest_prod.pk %}">
+                        <p>{{ latest_prod.name }}</p>
+                    </a>
                 </div>
             </div>
             {% endfor %}

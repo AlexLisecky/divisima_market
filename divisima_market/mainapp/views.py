@@ -1,5 +1,7 @@
 import datetime
 import random
+
+from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 
 from .models import Product, Category
@@ -34,17 +36,22 @@ class CheckoutView(ListView):
     queryset = []
 
 
-class CategoryView(ListView):
-    template_name = 'mainapp/category.html'
+class CategoryView(DetailView):
     model = Category
-    queryset = Category.objects.all()
-    context_object_name = 'categories'
+    template_name = 'mainapp/category.html'
+    context_object_name = 'category'
+    slug_field = 'url'
+
+    # def get(self, request):
+    #     print(f' реквест {request.method}')
+    #     return render(request, 'mainapp/category.html')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        url = Category.url
         context['products'] = Product.objects.all()
+        context['categories'] = Category.objects.all()
         return context
-
 
 
 class CartView(ListView):
@@ -52,7 +59,7 @@ class CartView(ListView):
     model = Product
     context_object_name = 'products'
 
-    def get_context_data(self,**kwargs):
+    def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         my_ids = Product.objects.values_list('id', flat=True)
         my_ids = list(my_ids)

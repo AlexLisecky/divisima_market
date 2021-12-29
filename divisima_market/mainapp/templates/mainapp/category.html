@@ -1,19 +1,6 @@
 {% extends 'mainapp/base.html' %}
 {% load static %}
 {% block content %}
-<!-- Page info -->
-<div class="page-top-info">
-    <div class="container">
-        <h4>CAtegory PAge</h4>
-        <div class="site-pagination">
-            <a href="">Home</a> /
-            <a href="">Shop</a> /
-        </div>
-    </div>
-</div>
-<!-- Page info end -->
-
-
 <!-- Category section -->
 <section class="category-section spad">
     <div class="container">
@@ -23,7 +10,7 @@
                     <h2 class="fw-title">Categories</h2>
                     <ul class="category-menu">
                         {% for category in categories %}
-                            <li><a href="#">{{ category.name }}  ({{category.product_category.count}})</a></li>
+                        <li><a href="{% url 'main:category' category.url %}">{{ category.name }} ({{category.product_category.count}})</a></li>
                         {% endfor %}
                     </ul>
                 </div>
@@ -133,12 +120,12 @@
             </div>
             <div class="col-lg-9  order-1 order-lg-2 mb-5 mb-lg-0">
                 <div class="row">
-                    {% for product in products %}
+                    {% for product in category.product_category.all %}
                     <div class="col-lg-4 col-sm-6">
                         <div class="product-item">
                             <div class="pi-pic">
-                                {% if product.on_sale %}
-                                    <div class="tag-sale">ON SALE</div>
+                                {% if product.on_sale %}-->
+                                <div class="tag-sale">ON SALE</div>
                                 {% endif %}
                                 <img src="{{ product.image.url }}" alt="">
                                 <div class="pi-links">
@@ -149,7 +136,9 @@
                             </div>
                             <div class="pi-text">
                                 <h6>${{ product.price }}</h6>
-                                <p>{{ product.name }}</p>
+                                <a href="{% url 'main:product' product.pk %}">
+                                    <p>{{ product.name }}</p>
+                                </a>
                             </div>
                         </div>
                     </div>

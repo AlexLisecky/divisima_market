@@ -1,6 +1,7 @@
 import datetime
 import random
 
+from django.http import HttpResponseNotFound
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 
@@ -11,24 +12,29 @@ class IndexView(ListView):
     """ Главная страница """
     template_name = 'mainapp/index.html'
     model = Product
-    queryset = Product.objects.all()
+    queryset = Product.objects.all()[:8]
     context_object_name = 'products'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['latest_products'] = Product.objects.filter(created_at__lte=datetime.date.today())[:5]
+        # context['latest_products'] = Product.objects.filter(created_at__gte=datetime.date.today())[:5]
+        context['latest_products'] = Product.objects.all().order_by('-created_at')[:4]
         return context
 
 
+
 class ProductView(DetailView):
+    """ Страница продукта """
     model = Product
     template_name = 'mainapp/product.html'
     context_object_name = 'product'
 
 
 class ContactView(ListView):
+    model = Product
     template_name = 'mainapp/contact.html'
-    queryset = []
+    queryset = Product.objects.all()[:4]
+    context_object_name = 'products'
 
 
 class CheckoutView(ListView):
@@ -42,14 +48,8 @@ class CategoryView(DetailView):
     context_object_name = 'category'
     slug_field = 'url'
 
-    # def get(self, request):
-    #     print(f' реквест {request.method}')
-    #     return render(request, 'mainapp/category.html')
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        url = Category.url
-        context['products'] = Product.objects.all()
         context['categories'] = Category.objects.all()
         return context
 
@@ -68,3 +68,7 @@ class CartView(ListView):
         random_records = Product.objects.filter(id__in=rand_ids)
         context['random_products'] = random_records
         return context
+
+
+def pageNotFound(request, exception):
+    return HttpResponseNotFound('<h1>Страница не найдена</h1>')

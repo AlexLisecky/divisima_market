@@ -136,7 +136,7 @@
                             </div>
                             <div class="pi-text">
                                 <h6>${{ product.price }}</h6>
-                                <a href="{% url 'main:product' product.pk %}">
+                                <a href="{{ product.get_absolute_url }}">
                                     <p>{{ product.name }}</p>
                                 </a>
                             </div>

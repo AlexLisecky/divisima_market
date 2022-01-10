@@ -88,7 +88,7 @@
 <!-- Features section end -->
 
 
-<!-- letest product section -->
+<!-- latest product section -->
 <section class="top-letest-product-section">
     <div class="container">
         <div class="section-title">
@@ -106,7 +106,7 @@
                 </div>
                 <div class="pi-text">
                     <h6>${{ latest_prod.price }}</h6>
-                    <a href="{% url 'main:product' latest_prod.pk %}">
+                    <a href="{{ latest_prod.get_absolute_url }}">
                         <p>{{ latest_prod.name }}</p>
                     </a>
                 </div>
@@ -147,7 +147,7 @@
                     </div>
                     <div class="pi-text">
                         <h6>${{ product.price }}</h6>
-                        <a href="{% url 'main:product' product.pk %}">
+                        <a href="{{ product.get_absolute_url }}">
                             <p>{{ product.name }}</p>
                         </a>
                     </div>

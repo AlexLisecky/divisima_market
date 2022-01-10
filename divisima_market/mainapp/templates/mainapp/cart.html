@@ -105,7 +105,7 @@
             <div class="col-lg-3 col-sm-6">
                 <div class="product-item">
                     <div class="pi-pic">
-                        <div class="tag-new">New</div>
+<!--                        <div class="tag-new">New</div>-->
                         <img src="{{ product.image.url }}" alt="">
                         <div class="pi-links">
                             <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
@@ -114,7 +114,9 @@
                     </div>
                     <div class="pi-text">
                         <h6>${{ product.price }}</h6>
-                        <p>{{ product.name }}</p>
+                        <a href="{{ product.get_absolute_url }}">
+                            <p>{{ product.name }}</p>
+                        </a>
                     </div>
                 </div>
             </div>

@@ -4,7 +4,7 @@ import random
 from django.http import HttpResponseNotFound
 from django.views.generic import ListView, DetailView
 
-from .models import Product, Category
+from .models import Product, Category, ProductImage
 
 
 class IndexView(ListView):
@@ -19,7 +19,6 @@ class IndexView(ListView):
         # context['latest_products'] = Product.objects.filter(created_at__gte=datetime.date.today())[:5]
         context['latest_products'] = Product.objects.all().order_by('-created_at')[:4]
         return context
-
 
 
 class ProductView(DetailView):

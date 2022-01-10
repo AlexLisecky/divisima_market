@@ -10,7 +10,8 @@
                     <h2 class="fw-title">Categories</h2>
                     <ul class="category-menu">
                         {% for category in categories %}
-                        <li><a href="{% url 'main:category' category.url %}">{{ category.name }} ({{category.product_category.count}})</a></li>
+                        <li><a href="{% url 'main:category' category.url %}">{{ category.name }}
+                            ({{category.product_category.count}})</a></li>
                         {% endfor %}
                     </ul>
                 </div>
@@ -126,6 +127,9 @@
                             <div class="pi-pic">
                                 {% if product.on_sale %}-->
                                 <div class="tag-sale">ON SALE</div>
+                                {% endif %}
+                                {% if product.is_new %}
+                                <div class="tag-new">New</div>
                                 {% endif %}
                                 <img src="{{ product.image.url }}" alt="">
                                 <div class="pi-links">

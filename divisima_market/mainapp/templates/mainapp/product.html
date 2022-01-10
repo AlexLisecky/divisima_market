@@ -9,26 +9,19 @@
         </div>
         <div class="row">
             <div class="col-lg-6">
-                <div class="product-pic-zoom">
                     <img class="product-big-img" src="{{ product.image.url }}" alt="">
-                </div>
                 <div class="product-thumbs" tabindex="1" style="overflow: hidden; outline: none;">
                     <div class="product-thumbs-track">
-                        <div class="pt active" data-imgbigurl="img/single-product/1.jpg"><img
-                                src="{% static 'img/single-product/thumb-1.jpg' %}" alt=""></div>
-                        <div class="pt" data-imgbigurl="img/single-product/2.jpg"><img
-                                src="{% static 'img/single-product/thumb-2.jpg' %}" alt=""></div>
-                        <div class="pt" data-imgbigurl="img/single-product/3.jpg"><img
-                                src="{% static 'img/single-product/thumb-3.jpg' %}" alt=""></div>
-                        <div class="pt" data-imgbigurl="img/single-product/4.jpg"><img
-                                src="{% static 'img/single-product/thumb-4.jpg' %}" alt=""></div>
+                        {% for image in product.productimage_set.all %}
+                        <div class="pt active"><img src="{{ image.image.url }}" alt=""></div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
             <div class="col-lg-6 product-details">
                 <h2 class="p-title">{{ product.name }}</h2>
-                {% for p in product.category.all %}
-                <p>{{ p.name }}</p>
+                {% for product in product.category.all %}
+                <p>{{ product.name }}</p>
                 {% endfor %}
                 <h3 class="p-price">${{ product.price }}</h3>
                 {% if product.is_available %}
@@ -145,59 +138,6 @@
             <div class="product-item">
                 <div class="pi-pic">
                     <img src="{% static 'img/product/1.jpg' %}" alt="">
-                    <div class="pi-links">
-                        <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-                        <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-                    </div>
-                </div>
-                <div class="pi-text">
-                    <h6>$35,00</h6>
-                    <p>Flamboyant Pink Top </p>
-                </div>
-            </div>
-            <div class="product-item">
-                <div class="pi-pic">
-                    <div class="tag-new">New</div>
-                    <img src="{% static 'img/product/2.jpg' %}" alt="">
-                    <div class="pi-links">
-                        <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-                        <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-                    </div>
-                </div>
-                <div class="pi-text">
-                    <h6>$35,00</h6>
-                    <p>Black and White Stripes Dress</p>
-                </div>
-            </div>
-            <div class="product-item">
-                <div class="pi-pic">
-                    <img src="{% static 'img/product/3.jpg' %}" alt="">
-                    <div class="pi-links">
-                        <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-                        <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-                    </div>
-                </div>
-                <div class="pi-text">
-                    <h6>$35,00</h6>
-                    <p>Flamboyant Pink Top </p>
-                </div>
-            </div>
-            <div class="product-item">
-                <div class="pi-pic">
-                    <img src="{% static 'img/product/4.jpg' %}" alt="">
-                    <div class="pi-links">
-                        <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-                        <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-                    </div>
-                </div>
-                <div class="pi-text">
-                    <h6>$35,00</h6>
-                    <p>Flamboyant Pink Top </p>
-                </div>
-            </div>
-            <div class="product-item">
-                <div class="pi-pic">
-                    <img src="{% static 'img/product/6.jpg' %}" alt="">
                     <div class="pi-links">
                         <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
                         <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>

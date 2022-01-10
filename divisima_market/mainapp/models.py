@@ -5,10 +5,13 @@ from django.urls import reverse
 class Category(models.Model):
     """ Модель Категория """
     name = models.CharField(verbose_name='Название', max_length=100)
-    url = models.SlugField(verbose_name='Слаг', max_length=160, unique=True)
+    url = models.SlugField(verbose_name='Слаг', max_length=160, db_index=True, unique=True)
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('main:category', kwargs={'slug': self.url})
 
     class Meta:
         verbose_name = 'Категория'

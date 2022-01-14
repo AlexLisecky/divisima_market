@@ -1,3 +1,5 @@
 from django.contrib import admin
 
-# Register your models here.
+from authapp.models import UserMarket
+
+admin.site.register(UserMarket)

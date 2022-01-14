@@ -26,25 +26,32 @@ class ProductView(DetailView):
     model = Product
     template_name = 'mainapp/product.html'
     context_object_name = 'product'
+    extra_context = {'category_page': 'Product'}
 
 
 class ContactView(ListView):
+    """ Страница контакты"""
     model = Product
     template_name = 'mainapp/contact.html'
     queryset = Product.objects.all()[:4]
     context_object_name = 'products'
+    extra_context = {'category_page': 'Contact'}
 
 
 class CheckoutView(ListView):
+    """ Страница проверки"""
     template_name = 'mainapp/checkout.html'
     queryset = []
+    extra_context = {'category_page': 'Cart'}
 
 
 class CategoryView(DetailView):
+    """ Страница категорий """
     model = Category
     template_name = 'mainapp/category.html'
     context_object_name = 'category'
     slug_field = 'url'
+    extra_context = {'category_page': 'Category'}
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -53,9 +60,11 @@ class CategoryView(DetailView):
 
 
 class CartView(ListView):
+    """ Страница карт"""
     template_name = 'mainapp/cart.html'
     model = Product
     context_object_name = 'products'
+    extra_context = {'category_page': 'Cart'}
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -69,4 +78,5 @@ class CartView(ListView):
 
 
 def pageNotFound(request, exception):
+    """ Страница 404 не найдено """
     return HttpResponseNotFound('<h1>Страница не найдена</h1>')

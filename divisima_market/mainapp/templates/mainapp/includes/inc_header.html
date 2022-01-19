@@ -20,7 +20,14 @@
                     <div class="user-panel">
                         <div class="up-item">
                             <i class="flaticon-profile"></i>
-                            <a href="#">Sign</a> In or <a href="{% url 'auth:register' %}">Create Account</a>
+                            <a href="#">
+                                {% if user.is_authenticated %}
+                                {{ user.username }}
+                                {% else %}
+                            </a>
+                            <a href="{% url 'account_login' %}">Sign</a> In or <a href="{% url 'account_signup' %}">Create
+                            Account</a>
+                            {% endif %}
                         </div>
                         <div class="up-item">
                             <div class="shopping-card">

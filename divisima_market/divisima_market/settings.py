@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+<<<<<<< HEAD
 
     # myapp
     'mainapp',
@@ -46,6 +47,9 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
 
+=======
+    'mainapp',
+>>>>>>> main
 ]
 
 MIDDLEWARE = [

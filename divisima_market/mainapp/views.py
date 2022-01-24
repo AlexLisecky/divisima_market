@@ -1,10 +1,12 @@
-import datetime
+import logging
 import random
 
 from django.http import HttpResponseNotFound
 from django.views.generic import ListView, DetailView
 
 from .models import Product, Category, ProductImage
+
+logger = logging.getLogger('main')
 
 
 class IndexView(ListView):

@@ -1,0 +1,11 @@
+version: '3.7'
+
+services:
+  web:
+    build: .
+    command: python /usr/src/dm_rest/manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/usr/src/dm_rest
+    ports:
+      - 8000:8000
+

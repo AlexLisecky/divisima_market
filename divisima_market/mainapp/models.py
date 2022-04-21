@@ -1,6 +1,16 @@
 from django.db import models
 from django.urls import reverse
 
+class Color(models.Model):
+    title = models.CharField(max_length=10)
+    color = models.CharField(max_length=10)
+
+    class Meta:
+        verbose_name = 'Цвет для полоски под меню'
+        verbose_name_plural = 'Цвет для полоски под меню'
+
+    def __str__(self):
+        return self.title
 
 class Category(models.Model):
     """ Модель Категория """

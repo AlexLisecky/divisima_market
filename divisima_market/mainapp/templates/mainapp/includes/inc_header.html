@@ -70,7 +70,24 @@
                     </ul>
                 </li>
                 <li><a href="#">Blog</a></li>
+                <div class="colored-line"></div>
             </ul>
         </div>
     </nav>
 </header>
+<style>
+    .colored-line {
+    height: 4px;
+    background-image: repeating-linear-gradient(90deg,
+            {{ colors.0.color }} 0,
+            {{ colors.0.color }} 20px,
+            {{ colors.1.color }} 20px,
+            {{ colors.1.color }} 40px,
+            {{ colors.2.color }} 40px,
+            {{ colors.2.color }} 60px,
+            {{ colors.3.color }} 60px,
+            {{ colors.3.color }} 80px,
+            {{ colors.4.color }} 80px,
+            {{ colors.4.color }} 100px);
+    }
+</style>

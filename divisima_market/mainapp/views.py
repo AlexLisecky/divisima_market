@@ -4,7 +4,7 @@ import random
 from django.http import HttpResponseNotFound
 from django.views.generic import ListView, DetailView
 
-from .models import Product, Category, ProductImage
+from .models import Product, Category, ProductImage, Color
 
 logger = logging.getLogger('main')
 
@@ -18,6 +18,8 @@ class IndexView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['colors'] = Color.objects.all().order_by('title')
+        lst = []
         # context['latest_products'] = Product.objects.filter(created_at__gte=datetime.date.today())[:5]
         context['latest_products'] = Product.objects.all().order_by('-created_at')[:4]
         return context

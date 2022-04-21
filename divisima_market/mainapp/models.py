@@ -1,6 +1,28 @@
 from django.db import models
 from django.urls import reverse
 
+class FooterImg(models.Model):
+    color = models.CharField(max_length=10)
+    img = models.ImageField(upload_to="frontend/images",blank=True)
+
+    class Meta:
+        verbose_name = 'Изменение футера'
+        verbose_name_plural = 'Изменение футера'
+
+    def __str__(self):
+        return 'Футер'
+
+class ImgCategory(models.Model):
+    title = models.CharField(max_length=10)
+    img = models.ImageField(upload_to="frontend/images/")
+
+    class Meta:
+        verbose_name = 'Картинки для основных категорий'
+        verbose_name_plural = 'Картинки для основных категорий'
+
+    def __str__(self):
+        return self.title
+
 class Color(models.Model):
     title = models.CharField(max_length=10)
     color = models.CharField(max_length=10)

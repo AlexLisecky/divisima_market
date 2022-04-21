@@ -69,8 +69,9 @@
                         <li><a href="{% url 'main:contact' %}">Contact Page</a></li>
                     </ul>
                 </li>
-                <li><a href="#">Blog</a></li>
+                <li><a href="#">BLOG</a></li>
                 <div class="colored-line"></div>
+                <div class="test-img"></div>
             </ul>
         </div>
     </nav>
@@ -79,15 +80,15 @@
     .colored-line {
     height: 4px;
     background-image: repeating-linear-gradient(90deg,
-            {{ colors.0.color }} 0,
-            {{ colors.0.color }} 20px,
-            {{ colors.1.color }} 20px,
-            {{ colors.1.color }} 40px,
-            {{ colors.2.color }} 40px,
-            {{ colors.2.color }} 60px,
-            {{ colors.3.color }} 60px,
-            {{ colors.3.color }} 80px,
-            {{ colors.4.color }} 80px,
-            {{ colors.4.color }} 100px);
+            {{ header_color.0.color }} 0,
+            {{ header_color.0.color }} 20px,
+            {{ header_color.1.color }} 20px,
+            {{ header_color.1.color }} 40px,
+            {{ header_color.2.color }} 40px,
+            {{ header_color.2.color }} 60px,
+            {{ header_color.3.color }} 60px,
+            {{ header_color.3.color }} 80px,
+            {{ header_color.4.color }} 80px,
+            {{ header_color.4.color }} 100px);
     }
 </style>

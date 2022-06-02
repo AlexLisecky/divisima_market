@@ -1,2 +1,4 @@
 .idea
 divisima_market/db.sqlite3
+env
+/__pycache/

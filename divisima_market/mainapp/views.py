@@ -20,7 +20,6 @@ class IndexView(ListView):
         context = super().get_context_data(**kwargs)
         context['colors'] = Color.objects.all().order_by('title')
         context['categories_images'] = ImgCategory.objects.all().order_by('title')
-        context['footer_']
         # context['latest_products'] = Product.objects.filter(created_at__gte=datetime.date.today())[:5]
         context['latest_products'] = Product.objects.all().order_by('-created_at')[:4]
         return context
